@@ -142,7 +142,7 @@ const ArticleUpload = () => {
                 authorApproved:true
             };
 
-            articleData.translations['en'] = newFileName;
+            articleData.translations[language] = newFileName;
 
             const articleDataRef = ref(storage, `upload_from_authors/${newFileName}`);
             await uploadString(articleDataRef, JSON.stringify(articleData));
