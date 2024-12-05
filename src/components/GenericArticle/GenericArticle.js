@@ -159,7 +159,8 @@ const DefaultArticle = (props) => {
             if (node.type === 'text') {
                 return processText(node.data);
             } else if (node.type === 'tag') {
-                return `<${node.name}>${(node.children || []).map(processNode).join('')}</${node.name}>`;
+                const children = (node.children || []).map(processNode).join('');
+                return `<${node.name}${node.attribs ? ' ' + Object.entries(node.attribs).map(([key, value]) => `${key}="${value}"`).join(' ') : ''}>${children}</${node.name}>`;
             } else {
                 return '';
             }
